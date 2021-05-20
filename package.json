@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "publish": "npm version major && npm publish"
+    "publish": "npm version minor && npm publish"
   },
   "repository": {
     "type": "git",
