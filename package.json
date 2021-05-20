@@ -4,11 +4,15 @@
   "description": "A terminal resume for Mohammad Zain Abbas (mohammadzainabbas@gmail.com)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "publish": "npm version major && npm publish"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mohammadzainabbas/npx-card.git"
+  },
+  "bin": {
+    "mohammadzainabbas":"./index.js"
   },
   "keywords": [
     "npx-card",
