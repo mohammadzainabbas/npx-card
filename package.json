@@ -1,0 +1,29 @@
+{
+  "name": "mohammadzainabbas",
+  "version": "1.0.1",
+  "description": "A terminal resume for Mohammad Zain Abbas (mohammadzainabbas@gmail.com)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "publish": "npm version minor && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohammadzainabbas/npx-card.git"
+  },
+  "bin": {
+    "mohammadzainabbas": "./index.js"
+  },
+  "keywords": [
+    "npx-card",
+    "cli",
+    "npx",
+    "typescript"
+  ],
+  "author": "Mohammad Zain Abbas (mohammadzainabbas@gmail.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mohammadzainabbas/npx-card/issues"
+  },
+  "homepage": "https://github.com/mohammadzainabbas/npx-card#readme"
+}
