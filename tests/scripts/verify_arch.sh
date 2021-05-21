@@ -25,3 +25,5 @@ fi
 if [ -z "$(echo $node_version | grep --fixed-strings $3)" ]; then
   echo "Error: Unexpected Node version" && exit 1
 fi
+
+echo "Verified node version '$node_version' with '$architecture' architecture on '$os'"
