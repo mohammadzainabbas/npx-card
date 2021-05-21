@@ -22,6 +22,11 @@ jobs:
           registry-url: https://npm.pkg.github.com/
           scope: '@${{ github.actor }}'
 
+      - name: Set up Git
+        run: |
+          git config --global user.email "mohammadzainabbas@gmail.com"
+          git config --global user.name "${{ github.actor }}"
+
       - name: Use cached node_modules
         uses: actions/cache@master
         with:
