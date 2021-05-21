@@ -1,5 +1,5 @@
 {
-  "name": "mohammadzainabbas",
+  "name": "@mohammadzainabbas/mohammadzainabbas",
   "version": "1.3.0",
   "description": "A terminal resume for Mohammad Zain Abbas (mohammadzainabbas@gmail.com)",
   "main": "index.js",
@@ -14,7 +14,7 @@
     "url": "git+https://github.com/mohammadzainabbas/npx-card.git"
   },
   "publishConfig": {
-    "registry": "https://registry.npmjs.org"
+    "registry": "https://npm.pkg.github.com/@mohammadzainabbas"
   },
   "bin": {
     "mohammadzainabbas": "./index.js"
