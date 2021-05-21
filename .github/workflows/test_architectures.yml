@@ -1,0 +1,41 @@
+name: Test - Multiple Architectures
+
+on:
+  pull_request:
+    paths-ignore:
+      - '**.md'
+    branches:
+      - main
+      - dev
+
+  push:
+    paths-ignore:
+      - '**.md'
+    branches:
+      - main
+      - dev
+
+jobs:
+  verify:
+    runs-on: ${{ matrix.os }}
+    
+    strategy:
+
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node-version: [8, 10, 12, 14]
+
+    steps:
+
+      - name: Checkout current repo
+      - uses: actions/checkout@v2
+
+      - name: Setup NodeJS (Version - ${{ matrix.node-version }}) for ${{ matrix.os }}
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      
+      - name: Verify Architecture & Node version (via verify script)
+        run: tests/scripts/verify_arch.sh "${{ matrix.os }} ${{ matrix.node-version }}"
+        shell: bash
