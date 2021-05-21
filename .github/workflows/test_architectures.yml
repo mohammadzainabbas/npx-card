@@ -32,5 +32,5 @@ jobs:
           architecture: ${{ matrix.architecture }}
 
       - name: Verify Architecture & Node version (via verify script)
-        run: tests/scripts/verify_arch.sh "${{ matrix.os }}" "${{ matrix.architecture }}" "${{ matrix.node-version }}"
+        run: sh tests/scripts/verify_arch.sh "${{ matrix.os }}" "${{ matrix.architecture }}" "${{ matrix.node-version }}"
         shell: bash
