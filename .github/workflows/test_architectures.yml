@@ -17,17 +17,20 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
         node-version: [8, 10, 12, 14]
+        architecture:
+          - x64
 
     steps:
 
       - name: Checkout current repo
         uses: actions/checkout@v2
 
-      - name: Setup NodeJS (Version - ${{ matrix.node-version }}) for ${{ matrix.os }}
+      - name: Setup NodeJS (${{ matrix.node-version }}) - ${{ matrix.architecture }} on ${{ matrix.os }}
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      
+          architecture: ${{ matrix.architecture }}
+
       - name: Verify Architecture & Node version (via verify script)
-        run: tests/scripts/verify_arch.sh "${{ matrix.os }}" "${{ matrix.node-version }}"
+        run: tests/scripts/verify_arch.sh "${{ matrix.os }}" "${{ matrix.architecture }}" "${{ matrix.node-version }}"
         shell: bash
