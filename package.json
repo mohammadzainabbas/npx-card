@@ -14,7 +14,7 @@
     "url": "git+https://github.com/mohammadzainabbas/npx-card.git"
   },
   "publishConfig": {
-    "registry": "https://registry-url"
+    "registry": "https://registry.npmjs.org"
   },
   "bin": {
     "mohammadzainabbas": "./index.js"
