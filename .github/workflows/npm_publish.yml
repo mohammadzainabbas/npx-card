@@ -38,7 +38,7 @@ jobs:
         run: sed -i 's^registry-url^registry.npmjs.org^' package.json
 
       - name: Publish to NPM Registry
-        run: npm publish --access public
+        run: npm run release
         env:
           CI: true
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
@@ -76,9 +76,10 @@ jobs:
         run: |
           sed -i 's^registry-url^npm.pkg.github.com/@${{ github.actor }}^' package.json
           cat package.json
+          node scripts/update_package.js "git" "${{ github.actor }}" || exit 1
 
       - name: Publish to GitHub Package Registry
-        run: npm publish --access public
+        run: npm run release
         env:
           CI: true
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
