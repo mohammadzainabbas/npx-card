@@ -1,25 +1,26 @@
-name: Publish to NPM Registry
+name: Publish to GitHub Registry
 
 on:
   push:
     branches:
-      - publish-npm
+      - publish-git
 
 jobs:
-  npm-publish:
-    name: npm-publish
+  gpr-publish:
+    name: gpr-publish
     runs-on: ubuntu-latest
 
     steps:
-      # Publish to Node Package Manager
+      # Publish to GitHub Package Registry
       - name: Checkout Repo
         uses: actions/checkout@main
 
-      - name: Setup Node.js (NPM)
+      - name: Setup Node.js (GPR)
         uses: actions/setup-node@master
         with:
           node-version: '12.x'
-          registry-url: 'https://registry.npmjs.org'
+          registry-url: https://npm.pkg.github.com/
+          scope: '@${{ github.actor }}'
 
       - name: Use cached node_modules
         uses: actions/cache@master
@@ -34,8 +35,8 @@ jobs:
         env:
           CI: true
 
-      - name: Publish to NPM Registry
+      - name: Publish to GitHub Package Registry
         run: npm run release
         env:
           CI: true
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
