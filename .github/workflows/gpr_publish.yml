@@ -1,0 +1,42 @@
+name: Publish to GitHub Registry
+
+on:
+  push:
+    branches:
+      - publish-git
+
+jobs:
+  gpr-publish:
+    name: gpr-publish
+    runs-on: ubuntu-latest
+
+    steps:
+      # Publish to GitHub Package Registry
+      - name: Checkout Repo
+        uses: actions/checkout@main
+
+      - name: Setup Node.js (GPR)
+        uses: actions/setup-node@master
+        with:
+          node-version: '12.x'
+          registry-url: https://npm.pkg.github.com/
+          scope: '@${{ github.actor }}'
+
+      - name: Use cached node_modules
+        uses: actions/cache@master
+        with:
+          path: node_modules
+          key: nodeModules-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            nodeModules-
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+        env:
+          CI: true
+
+      - name: Publish to GitHub Package Registry
+        run: npm run release
+        env:
+          CI: true
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
