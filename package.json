@@ -13,6 +13,9 @@
     "type": "git",
     "url": "git+https://github.com/mohammadzainabbas/npx-card.git"
   },
+  "publishConfig": {
+    "registry": "https://registry-url"
+  },
   "bin": {
     "mohammadzainabbas": "./index.js"
   },
@@ -27,5 +30,8 @@
   "bugs": {
     "url": "https://github.com/mohammadzainabbas/npx-card/issues"
   },
-  "homepage": "https://github.com/mohammadzainabbas/npx-card#readme"
+  "homepage": "https://github.com/mohammadzainabbas/npx-card#readme",
+  "dependencies": {
+    "boxen": "^5.0.1"
+  }
 }
