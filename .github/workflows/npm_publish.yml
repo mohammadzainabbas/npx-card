@@ -35,7 +35,10 @@ jobs:
           CI: true
 
       - name: Update Publish Config
-        run: sed -i 's^registry-url^registry.npmjs.org^' package.json
+        run: |
+          sed -i 's^registry-url^registry.npmjs.org^' package.json
+          node -e "console.log('✅ Updated package.json')"
+          cat package.json
 
       - name: Publish to NPM Registry
         run: npm run release
@@ -75,8 +78,9 @@ jobs:
       - name: Update Publish Config
         run: |
           sed -i 's^registry-url^npm.pkg.github.com/@${{ github.actor }}^' package.json
+          sed -i 's^"name":"^"name":"@${{ github.actor }}^' package.json
+          node -e "console.log('✅ Updated package.json')"
           cat package.json
-          node scripts/update_package.js "git" "${{ github.actor }}" || exit 1
 
       - name: Publish to GitHub Package Registry
         run: npm run release
