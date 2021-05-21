@@ -6,14 +6,6 @@ on:
       - '**.md'
     branches:
       - main
-      - dev
-
-  push:
-    paths-ignore:
-      - '**.md'
-    branches:
-      - main
-      - dev
 
 jobs:
   verify:
