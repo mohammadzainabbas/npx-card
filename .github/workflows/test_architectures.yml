@@ -29,5 +29,5 @@ jobs:
           node-version: ${{ matrix.node-version }}
       
       - name: Verify Architecture & Node version (via verify script)
-        run: tests/scripts/verify_arch.sh "${{ matrix.os }} ${{ matrix.node-version }}"
+        run: tests/scripts/verify_arch.sh "${{ matrix.os }}" "${{ matrix.node-version }}"
         shell: bash
