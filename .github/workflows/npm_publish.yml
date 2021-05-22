@@ -21,6 +21,11 @@ jobs:
           node-version: '12.x'
           registry-url: 'https://registry.npmjs.org'
 
+      - name: Set up Git
+        run: |
+          git config --global user.email "mohammadzainabbas@gmail.com"
+          git config --global user.name "${{ github.actor }}"
+
       - name: Use cached node_modules
         uses: actions/cache@master
         with:
